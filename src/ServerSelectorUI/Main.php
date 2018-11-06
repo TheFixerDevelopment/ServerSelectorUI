@@ -2,56 +2,52 @@
 
 namespace ServerSelectorUI;
 
-use pocketmine\Server;
+use pocketmine\{Server, Player};
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\block\{BlockBreakEvent, BlockPlaceEvent};
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\player\{PlayerJoinEvent, PlayerInteractEvent, PlayerExhaustEvent, PlayerDropItemEvent, PlayerItemConsumeEvent};
 use pocketmine\utils\TextFormat;
-use pocketmine\Player;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-use pocketmine\command\CommandExecutor;
-use pocketmine\command\ConsoleCommandSender;
+use pocketmine\command\{Command, CommandSender, CommandExecutor, ConsoleCommandSender};
 use pocketmine\item\Item;
 
 class Main extends PluginBase implements Listener {
     public function registerEvents(): void {
 	    $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
-    public function onEnable() : void {
+    public function onEnable(): void {
 	    $this->registerEvents();
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		if($api === null){
 			$this->getServer()->getPluginManager()->disablePlugin($this);			
 		}
     }
-    public function onDamageDisable(EntityDamageEvent $event){
+    public function onDamageDisable(EntityDamageEvent $event): void {
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
             $event->setCancelled(true);
         }
     }
-  public function onPlaceDisable(BlockPlaceEvent $event) {
+  public function onPlaceDisable(BlockPlaceEvent $event): void {
         $event->setCancelled(true);
     }
-    public function onBreakDisable(BlockBreakEvent $event) {
+    public function onBreakDisable(BlockBreakEvent $event): void {
 		$event->setCancelled(true);
     }
-    public function HungerDisable(PlayerExhaustEvent $event) {
+    public function HungerDisable(PlayerExhaustEvent $event): void {
         $event->setCancelled(true);
     }
-    public function DropItemDisable(PlayerDropItemEvent $event){
+    public function DropItemDisable(PlayerDropItemEvent $event): void {
         $event->setCancelled(true);
     }
-    public function onConsumeDisable(PlayerItemConsumeEvent $event){
+    public function onConsumeDisable(PlayerItemConsumeEvent $event): void {
         $event->setCancelled(true);
     }
-    public function onJoin(PlayerJoinEvent $event){
+    public function onJoin(PlayerJoinEvent $event): void {
 	    $player = $event->getPlayer();
 	     $player->getInventory()->setItem(2, Item::get(345)->setCustomName("§a§lServer Selector"));
     }
-    public function onInteract(PlayerInteractEvent $event){
+    public function onInteract(PlayerInteractEvent $event): bool {
 	   $player = $event->getPlayer();
 	    $item = $event->getItem();
 	    if($item->getCustomName() == "§a§lServer Selector"){
