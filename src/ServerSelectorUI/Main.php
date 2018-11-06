@@ -95,7 +95,7 @@ class Main extends PluginBase implements Listener {
 			case "servers":
 				if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, array $data){
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 					$result = $data[0];
 					
 					if($result === null){
