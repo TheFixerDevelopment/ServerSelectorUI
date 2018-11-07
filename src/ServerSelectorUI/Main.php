@@ -77,6 +77,9 @@ class Main extends PluginBase implements Listener {
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;
+							
+							case 3:
+								$sender->sendMessage("§cYou have closed the server selector!");
               
 								
 						}
@@ -86,6 +89,7 @@ class Main extends PluginBase implements Listener {
 					$form->addButton(TextFormat::BOLD . "§3OP §bFactions\n§a§lONLINE", 0);
 					$form->addButton(TextFormat::BOLD . "§3Normal §bFactions\n§a§lONLINE", 1);
 					$form->addButton(TextFormat::BOLD . "§5Prisons\n§c§lComing Soon", 2);
+		                        $form->addButton(TextFormat::BOLD . "§c§lEXIT", 3);
 					$form->sendToPlayer($player);
 	    }
     }
