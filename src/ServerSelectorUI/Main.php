@@ -13,6 +13,7 @@ use pocketmine\command\{Command, CommandSender, CommandExecutor, ConsoleCommandS
 use pocketmine\item\Item;
 
 class Main extends PluginBase implements Listener {
+	
     public function registerEvents(): void {
 	    $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
@@ -45,13 +46,17 @@ class Main extends PluginBase implements Listener {
     }
     public function onJoin(PlayerJoinEvent $event): void {
 	    $player = $event->getPlayer();
-	     $player->getInventory()->setItem(2, Item::get(345)->setCustomName("§a§lServer Selector"));
+	    $this->LoadItems($player);
+    }
+    public function LoadItems(Player $player): void {
+	    $player->getInventory()->clearAll();
+	    $player->getInventory()->setItem(2, Item::get(345)->setCustomName("§a§lServer Selector"));
     }
     public function onInteract(PlayerInteractEvent $event): bool {
 	   $player = $event->getPlayer();
-	    $item = $event->getItem();
+	    $item = $player->getInventory()->getItemInHand();
 	    if($item->getCustomName() == "§a§lServer Selector"){
-		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+		                        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 					$form = $api->createSimpleForm(function (Player $player, $data){
 					$result = $data[0];
 					
