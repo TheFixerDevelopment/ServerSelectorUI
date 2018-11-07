@@ -57,7 +57,7 @@ class Main extends PluginBase implements Listener {
 	    $item = $player->getInventory()->getItemInHand();
 	    if($item->getCustomName() == "§a§lServer Selector"){
 		                        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $player, $data){
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 					$result = $data[0];
 					
 					if($result === null){
@@ -66,16 +66,16 @@ class Main extends PluginBase implements Listener {
 						switch($result){
 							case 0:
 								$command = "transferserver factions.voidminerpe.ml 25655";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 							break;
 								
 							case 1:
 								$command = "transferserver factions2.voidminerpe.ml 25584";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 						        break;
 							
 							case 2:
-								$player->sendMessage(TextFormat::RED . "Coming soon");
+								$sender->sendMessage(TextFormat::RED . "Coming soon");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;
