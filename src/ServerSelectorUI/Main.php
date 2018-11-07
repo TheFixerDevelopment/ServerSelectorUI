@@ -58,20 +58,18 @@ class Main extends PluginBase implements Listener {
 	    if($item->getCustomName() == "§a§lServer Selector"){
 		                        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 					$form = $api->createSimpleForm(function (Player $sender, $data){
-					$result = $data[0];
+					$result = $data;
 					
-					if($result === null){
+					if($result != null){
 						return true;
 					}
 						switch($result){
 							case 0:
-								$command = "transferserver factions.voidminerpe.ml 25655";
-								$this->getServer()->getCommandMap()->dispatch($sender, $command);
+								$sender->transfer("factions.voidminerpe.ml", "25655");
 							break;
 								
 							case 1:
-								$command = "transferserver factions2.voidminerpe.ml 25584";
-								$this->getServer()->getCommandMap()->dispatch($sender, $command);
+								$sender->transfer("factions2.voidminerpe.ml", "25584");
 						        break;
 							
 							case 2:
@@ -85,9 +83,9 @@ class Main extends PluginBase implements Listener {
 					});
 					$form->setTitle("§a§lServer Selector!");
 					$form->setContent("§bPlease choose a server to teleport to!");
-					$form->addButton(TextFormat::BOLD . "§3OP §bFactions\n§a§lONLINE");
-					$form->addButton(TextFormat::BOLD . "§3Normal §bFactions\n§a§lONLINE");
-					$form->addButton(TextFormat::BOLD . "§5Prisons\n§c§lComing Soon");
+					$form->addButton(TextFormat::BOLD . "§3OP §bFactions\n§a§lONLINE", 0);
+					$form->addButton(TextFormat::BOLD . "§3Normal §bFactions\n§a§lONLINE", 1);
+					$form->addButton(TextFormat::BOLD . "§5Prisons\n§c§lComing Soon", 2);
 					$form->sendToPlayer($player);
 	    }
     }
@@ -97,9 +95,9 @@ class Main extends PluginBase implements Listener {
 				if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 					$form = $api->createSimpleForm(function (Player $sender, $data){
-					$result = $data[0];
+					$result = $data;
 					
-					if($result === null){
+					if($result != null){
 						return true;
 					}
 						switch($result){
@@ -123,9 +121,9 @@ class Main extends PluginBase implements Listener {
 					});
 					$form->setTitle("§a§lServer Selector!");
 					$form->setContent("§bPlease choose a server to teleport to!");
-					$form->addButton(TextFormat::BOLD . "§6§lVoid§bPrisons§cPE (§dTap Me!)");
-					$form->addButton(TextFormat::BOLD . "§6§lVoid§bFactions§cPE (§dTap Me!)");
-					$form->addButton(TextFormat::BOLD . "§6§lVoid§bKitPvP§cPE (§dTap me!)");
+					$form->addButton(TextFormat::BOLD . "§6§lVoid§bPrisons§cPE (§dTap Me!)", 0);
+					$form->addButton(TextFormat::BOLD . "§6§lVoid§bFactions§cPE (§dTap Me!)", 1);
+					$form->addButton(TextFormat::BOLD . "§6§lVoid§bKitPvP§cPE (§dTap me!)", 2);
 					$form->sendToPlayer($sender);
 				}
 				else{
