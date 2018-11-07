@@ -52,7 +52,7 @@ class Main extends PluginBase implements Listener {
 	    $player->getInventory()->clearAll();
 	    $player->getInventory()->setItem(2, Item::get(345)->setCustomName("§a§lServer Selector"));
     }
-    public function onInteract(PlayerInteractEvent $event): bool {
+    public function onInteract(PlayerInteractEvent $event) {
 	   $player = $event->getPlayer();
 	    $item = $player->getInventory()->getItemInHand();
 	    if($item->getCustomName() == "§a§lServer Selector"){
