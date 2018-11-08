@@ -24,6 +24,11 @@ class Main extends PluginBase implements Listener {
 			$this->getServer()->getPluginManager()->disablePlugin($this);			
 		}
     }
+    /*public function onDisable(): void { Coming soon
+        foreach ($this->getServer()->getOnlinePlayers() as $players) {
+            $players->transfer("hub.voidminerpe.ml", "25584"); To-Do make this configurable.
+        }
+    }*/
     public function onDamageDisable(EntityDamageEvent $event): void {
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
             $event->setCancelled(true);
@@ -58,76 +63,104 @@ class Main extends PluginBase implements Listener {
 	    if($item->getCustomName() == "§a§lServer Selector"){
 		                        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 					$form = $api->createSimpleForm(function (Player $sender, $data){
-					$result = $data;
+					$result = $data[0];
 					
-					if($result != null){
+					if($result === null){
 						return true;
 					}
 						switch($result){
 							case 0:
+								$sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
 								$sender->transfer("factions.voidminerpe.ml", "25655");
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
 							break;
-								
-							case 1:
-								$sender->transfer("factions2.voidminerpe.ml", "25584");
-						        break;
 							
+							switch($result){
+							case 1:
+								$sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
+								$sender->transfer("factions2.voidminerpe.ml", "25584");
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+						        break;
+									
+						    switch($result){
 							case 2:
 								$sender->sendMessage(TextFormat::RED . "Coming soon");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
+								return true;
 							break;
-							
+								
+					        switch($result){
 							case 3:
 								$sender->sendMessage("§cYou have closed the server selector!");
-              
+								return true;
+							break;
+					
+					        }
 								
+						}
+							}
 						}
 					});
 					$form->setTitle("§a§lServer Selector!");
 					$form->setContent("§bPlease choose a server to teleport to!");
-					$form->addButton(TextFormat::BOLD . "§3OP §bFactions\n§a§lONLINE", 0);
-					$form->addButton(TextFormat::BOLD . "§3Normal §bFactions\n§a§lONLINE", 1);
-					$form->addButton(TextFormat::BOLD . "§5Prisons\n§c§lComing Soon", 2);
-		                        $form->addButton(TextFormat::BOLD . "§c§lEXIT", 3);
+					$form->addButton(TextFormat::BOLD . "§3OP §bFactions\n§a§lONLINE");
+					$form->addButton(TextFormat::BOLD . "§3Normal §bFactions\n§a§lONLINE");
+					$form->addButton(TextFormat::BOLD . "§5Prisons\n§c§lComing Soon");
+		           		$form->addButton(TextFormat::BOLD . "§c§lEXIT");
 					$form->sendToPlayer($player);
 	    }
-    }
+						}
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
 		switch($cmd->getName()){
 			case "servers":
 				if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 					$form = $api->createSimpleForm(function (Player $sender, $data){
-					$result = $data;
+					$result = $data[0];
 					
-					if($result != null){
+					if($result === null){
 						return true;
 					}
 						switch($result){
 							case 0:
-								$command = "transferserver voidprisonspe.ml 25647";
-								$this->getServer()->getCommandMap()->dispatch($sender, $command);
+								$sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
+								$sender->transfer("factions.voidminerpe.ml", "25655");
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
 							break;
 								
+						switch($result){	
 							case 1:
-								$command = "transferserver voidfactionspe.ml 19132";
-								$this->getServer()->getCommandMap()->dispatch($sender, $command);
+								$sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
+								$sender->transfer("factions2.voidminerpe.ml", "25584");
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
 						        break;
-							
+									
+						switch($result){
 							case 2:
-								$command = "transferserver voidkitpvppe.ml 25625";
-								$this->getServer()->getCommandMap()->dispatch($sender, $command);
+								$sender->sendMessage(TextFormat::RED . "Coming soon");
+								//$command = "";
+								//$this->getServer()->getCommandMap()->dispatch($player, $command);
+								return true;
 							break;
-              
+								
+						switch($result){
+							case 3:
+								$sender->sendMessage("§cYou have closed the server selector!");
+								return true;
+							break;
+						}
+						}
+						}
 								
 						}
 					});
 					$form->setTitle("§a§lServer Selector!");
 					$form->setContent("§bPlease choose a server to teleport to!");
-					$form->addButton(TextFormat::BOLD . "§6§lVoid§bPrisons§cPE (§dTap Me!)", 0);
-					$form->addButton(TextFormat::BOLD . "§6§lVoid§bFactions§cPE (§dTap Me!)", 1);
-					$form->addButton(TextFormat::BOLD . "§6§lVoid§bKitPvP§cPE (§dTap me!)", 2);
+					$form->addButton(TextFormat::BOLD . "§3OP §bFactions\n§a§lONLINE");
+					$form->addButton(TextFormat::BOLD . "§3Normal §bFactions\n§a§lONLINE");
+					$form->addButton(TextFormat::BOLD . "§5Prisons\n§c§lComing Soon");
+		                        $form->addButton(TextFormat::BOLD . "§c§lEXIT");
 					$form->sendToPlayer($sender);
 				}
 				else{
