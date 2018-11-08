@@ -96,11 +96,11 @@ class Main extends PluginBase implements Listener {
 								return true;
 							break;
 					
-					        }
+					        		}
 								
-						}
 							}
 						}
+					}
 					});
 					$form->setTitle("§a§lServer Selector!");
 					$form->setContent("§bPlease choose a server to teleport to!");
@@ -110,7 +110,7 @@ class Main extends PluginBase implements Listener {
 		           		$form->addButton(TextFormat::BOLD . "§c§lEXIT");
 					$form->sendToPlayer($player);
 	    }
-						}
+    }
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
 		switch($cmd->getName()){
 			case "servers":
@@ -149,11 +149,11 @@ class Main extends PluginBase implements Listener {
 								$sender->sendMessage("§cYou have closed the server selector!");
 								return true;
 							break;
-						}
-						}
+								}
+							}
 						}
 								
-						}
+					}
 					});
 					$form->setTitle("§a§lServer Selector!");
 					$form->setContent("§bPlease choose a server to teleport to!");
