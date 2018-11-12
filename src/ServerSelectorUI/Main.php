@@ -197,7 +197,7 @@ class Main extends PluginBase implements Listener {
 					$form->addButton($this->getConfig()->get("server-1"), 0);
 					$form->addButton($this->getConfig()->get("server-2"), 1);
 					$form->addButton($this->getConfig()->get("server-3"), 2);
-					$form->sendToPlayer($player);
+					$form->sendToPlayer($sender);
 				}
 				else{
 					$sender->sendMessage($this->getConfig()->get("console-message"));
