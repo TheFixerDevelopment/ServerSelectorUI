@@ -21,6 +21,7 @@ class Main extends PluginBase implements Listener {
 	    $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
     public function onEnable(): void {
+		$this->saveDefaultConfig();
 	    $this->registerEvents();
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		if($api === null){
@@ -29,32 +30,76 @@ class Main extends PluginBase implements Listener {
     }
     public function onDamageDisable(EntityDamageEvent $event){
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
-            $event->setCancelled(true);
+            if($this->getConfig()->get("disable-damage") === true){
+            $event->setCancelled(true); //To-Do see if this is correct
         }
     }
-  public function onPlaceDisable(BlockPlaceEvent $event) {
-        $event->setCancelled(true);
     }
+  public function onPlaceDisable(BlockPlaceEvent $event) {
+       if($this->getConfig()->get("disable-placing") === true){
+        $event->setCancelled(true); //To-Do see if this is correct
+    }
+  }
     public function onBreakDisable(BlockBreakEvent $event) {
-		$event->setCancelled(true);
+         if($this->getConfig()->get("disable-breaking") === true){
+		$event->setCancelled(true); //To-Do see if this is correct
+    }
     }
     public function HungerDisable(PlayerExhaustEvent $event) {
-        $event->setCancelled(true);
+         if($this->getConfig()->get("disable-hunger") === true){
+        $event->setCancelled(true); //To-Do see if this is correct
+    }
     }
     public function DropItemDisable(PlayerDropItemEvent $event){
-        $event->setCancelled(true);
+         if($this->getConfig()->get("disable-dropitem") === true){
+        $event->setCancelled(true); //To-Do see if this is correct
+    }
     }
     public function onConsumeDisable(PlayerItemConsumeEvent $event){
-        $event->setCancelled(true);
+         if($this->getConfig()->get("disable-itemconsume") === true){
+        $event->setCancelled(true); //To-Do see if this is correct
+    }
+    }
+    public function onDamageEnable(EntityDamageEvent $event){
+        if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
+            if($this->getConfig()->get("disable-damage") === true){
+            $event->setCancelled(false); //To-Do see if this is correct
+        }
+    }
+    }
+  public function onPlaceEnable(BlockPlaceEvent $event) {
+       if($this->getConfig()->get("disable-placing") === true){
+        $event->setCancelled(false); //To-Do see if this is correct
+    }
+  }
+    public function onBreakEnable(BlockBreakEvent $event) {
+         if($this->getConfig()->get("disable-breaking") === true){
+		$event->setCancelled(false); //To-Do see if this is correct
+    }
+    }
+    public function HungerEnable(PlayerExhaustEvent $event) {
+         if($this->getConfig()->get("disable-hunger") === true){
+        $event->setCancelled(false); //To-Do see if this is correct
+    }
+    }
+    public function DropItemEnable(PlayerDropItemEvent $event){
+         if($this->getConfig()->get("disable-dropitem") === true){
+        $event->setCancelled(false); //To-Do see if this is correct
+    }
+    }
+    public function onConsumeEnable(PlayerItemConsumeEvent $event){
+         if($this->getConfig()->get("disable-itemconsume") === true){
+        $event->setCancelled(false); //To-Do see if this is correct
+    }
     }
     public function onJoin(PlayerJoinEvent $event){
 	    $player = $event->getPlayer();
-	     $player->getInventory()->setItem(2, Item::get(345)->setCustomName("§a§lServer Selector"));
+	     $player->getInventory()->setItem($this->getConfig()->get("join-slot"), Item::get($this->getConfig()->get("server-selector-itemid")->setCustomName($this->getConfig()->get("server-selector-name"))));
     }
     public function onInteract(PlayerInteractEvent $event){
 	   $player = $event->getPlayer();
 	    $item = $player->getInventory()->getItemInHand();
-	    if($item->getCustomName() == "§a§lServer Selector"){
+	    if($item->getCustomName() == $this->getConfig()->get("server-selector-name")){
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 					$form = $api->createSimpleForm(function (Player $sender, $data){
 					 $result = $data;
@@ -62,42 +107,45 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
-							        $form->setTitle("§a§lSERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the OP Factions server..");
-								$command = "transferserver factions.voidminerpe.ml 25655";
+							        $form->setTitle($this->getConfig()->get("server-status"));
+							        $form->addButton($this->getConfig()->get("server-loading"));
+									$ip1 = $this->getConfig()->get("ip1");
+								$command = "transferserver $ip1";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle("§c§lServer error");
-								$form->addButton("§cSomething went wrong - Contact server administrators if this was a mistake.");
+								$form->setTitle($this->getConfig()->get("server-errortitle"));
+								$form->addButton($this->getConfig()->get("server-error"));
 							break;
 								
 							case 1:
-							    $form->setTitle("§a§lSERVER ONLINE");
-							    $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the Factions server..");
-								$command = "transferserver factions2.voidminerpe.ml 25584";
+									$form->setTitle($this->getConfig()->get("server-status"));
+							        $form->addButton($this->getConfig()->get("server-loading"));
+									$ip2 = $this->getConfig()->get("ip2");
+								$command = "transferserver $ip2";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle("§c§lServer error");
-								$form->addButton("§cSomething went wrong - Contact server administrators if this was a mistake.");
+								$form->setTitle($this->getConfig()->get("server-errortitle"));
+								$form->addButton($this->getConfig()->get("server-error"));
 						        break;
-							
 							case 2:
-								$form->setTitle("§cServer unavailable!");
-								$form->addButton("§cThis server is currently unavailable or offline! Please retry later!");
-								$form->addButton("§c§lEXIT");
-								//$command = "";
-								//$this->getServer()->getCommandMap()->dispatch($player, $command);
+								$form->setTitle($this->getConfig()->get("server-status"));
+							        $form->addButton($this->getConfig()->get("server-loading"));
+									$ip2 = $this->getConfig()->get("ip2");
+								$command = "transferserver $ip2";
+								$this->getServer()->getCommandMap()->dispatch($sender, $command);
+								$form->setTitle($this->getConfig()->get("server-errortitle"));
+								$form->addButton($this->getConfig()->get("server-error"));
 							break;
               
 								
 						}
 					});
-					$form->setTitle("§a§lServer Selector!");
-					$form->setContent("§bPlease choose a server to teleport to!");
-					$form->addButton(TextFormat::BOLD . "§3OP §bFactions\n§a§lONLINE", 0);
-					$form->addButton(TextFormat::BOLD . "§3Normal §bFactions\n§a§lONLINE", 1);
-					$form->addButton(TextFormat::BOLD . "§5Prisons\n§c§lOFFLINE", 2);
+					$form->setTitle($this->getConfig()->get("server-selector-title"));
+					$form->setContent($this->getConfig()->get("server-selector-content"));
+					$form->addButton($this->getConfig()->get("server-1"), 0);
+					$form->addButton($this->getConfig()->get("server-2"), 1);
+					$form->addButton($this->getConfig()->get("server-3"), 2);
 					$form->sendToPlayer($player);
 	    }
-    }
+}
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
 		switch($cmd->getName()){
 			case "servers":
@@ -109,43 +157,45 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
-							    $form->setTitle("§a§lSERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the OP Factions server..");
-								$command = "transferserver factions.voidminerpe.ml 25655";
+							    $form->setTitle($this->getConfig()->get("server-status"));
+							        $form->addButton($this->getConfig()->get("server-loading"));
+									$ip1 = $this->getConfig()->get("ip1");
+								$command = "transferserver $ip1";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle("§c§lServer error");
-								$form->addButton("§cSomething went wrong - Contact server administrators if this was a mistake.");
+								$form->setTitle($this->getConfig()->get("server-errortitle"));
+								$form->addButton($this->getConfig()->get("server-error"));
 							break;
-								
 							case 1:
-							    $form->setTitle("§a§lSERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the Factions server..");
-								$command = "transferserver factions2.voidminerpe.ml 25584";
+									$form->setTitle($this->getConfig()->get("server-status"));
+							        $form->addButton($this->getConfig()->get("server-loading"));
+									$ip2 = $this->getConfig()->get("ip2");
+								$command = "transferserver $ip2";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle("§c§lServer error");
-								$form->addButton("§cSomething went wrong - Contact server administrators if this was a mistake.");
+								$form->setTitle($this->getConfig()->get("server-errortitle"));
+								$form->addButton($this->getConfig()->get("server-error"));
 						        break;
-							
 							case 2:
-								$form->setTitle("§cServer unavailable!");
-								$form->addButton("§cThis server is currently unavailable or offline! Please retry later!");
-								$form->addButton("§c§lEXIT");
-								//$command = "";
-								//$this->getServer()->getCommandMap()->dispatch($player, $command);
+								$form->setTitle($this->getConfig()->get("server-status"));
+							        $form->addButton($this->getConfig()->get("server-loading"));
+									$ip2 = $this->getConfig()->get("ip2");
+								$command = "transferserver $ip2";
+								$this->getServer()->getCommandMap()->dispatch($sender, $command);
+								$form->setTitle($this->getConfig()->get("server-errortitle"));
+								$form->addButton($this->getConfig()->get("server-error"));
 							break;
               
 								
 						}
 					});
-					$form->setTitle("§a§lServer Selector!");
-					$form->setContent("§bPlease choose a server to teleport to!");
-					$form->addButton(TextFormat::BOLD . "§3OP §bFactions\n§a§lONLINE", 0);
-					$form->addButton(TextFormat::BOLD . "§3Normal §bFactions\n§a§lONLINE", 1);
-					$form->addButton(TextFormat::BOLD . "§5Prisons\n§c§lOFFLINE", 2);
+					$form->setTitle($this->getConfig()->get("server-selector-title"));
+					$form->setContent($this->getConfig()->get("server-selector-content"));
+					$form->addButton($this->getConfig()->get("server-1"), 0);
+					$form->addButton($this->getConfig()->get("server-2"), 1);
+					$form->addButton($this->getConfig()->get("server-3"), 2);
 					$form->sendToPlayer($player);
 				}
 				else{
-					$sender->sendMessage(TextFormat::RED . "Use this Command in-game.");
+					$sender->sendMessage($this->getConfig()->get("console-message"));
 					return true;
 				}
 			break;

@@ -1,0 +1,46 @@
+## Welcome to the ServerSelectorUI Config!
+
+## Here are a list of events you can disable / enable:
+disable-damage: true
+disable-placing: true
+disable-breaking: true 
+disable-hunger: true 
+disable-dropitem: true 
+disable-itemconsume: true
+
+## Here are the server selector stuff!: 
+
+join-slot: 2
+## When you join, you'll have the item id you specified below, and you can change the slot that the item will go in your inventory.
+
+server-selector-itemid: 345
+## Server selector item id - Defaulted to compass.
+
+server-selector-name: "§a§lServer Selector"
+## The name of your server selector!
+
+server-status: "§a§lSERVER ONLINE"
+## Set that specific server status to whatever you want, just so it stands out well.
+
+server-loading: "§5Please wait whilst we teleport you to the server.."
+## When loading that specific server.
+
+server-errortitle: "§cServer unavailable"
+## Server error title - If a server is currently down or offline.
+
+server-error: "§cThe server is currently unavailable or offline. Please retry later."
+## Server error message.
+
+server-selector-title: "§aServer Selector!"
+## The title where if you either execute /servers or you tap the server selector on join,
+## it'd show with a server selector title with forms.
+
+sever-selector-content: "§bPlease select a server to teleport to!"
+## Server selector content (WIITH FORMS)
+
+## Servers that you can add - Currently, it's the maximum of three servers that are usable. If you want to disable a server,
+## you can just disable the ip with "" instead of the actual message.
+server-1: "factions.voidminerpe.ml 25655"
+server-2: "factions2.voidminerpe.ml 25584"
+server-3: ""
+## ^ As an example.
