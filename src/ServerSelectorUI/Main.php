@@ -62,12 +62,14 @@ class Main extends PluginBase implements Listener {
     }
     public function onDamageEnable(EntityDamageEvent $event){
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
-		$player = $event->getPlayer();
+		$player = $event->getEntity();
+		if($player instanceof Player){
             if($this->getConfig()->get("disable-damage") === false){
             }
         if($player->isSurvival() === true){
             $event->setCancelled(false); //To-Do see if this is correct
         }
+    }
     }
     }
   public function onPlaceEnable(BlockPlaceEvent $event) {
