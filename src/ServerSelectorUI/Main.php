@@ -95,8 +95,8 @@ class Main extends PluginBase implements Listener {
 					$form->sendToPlayer($player);
 	    }
     }
-    public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
-		switch($cmd->getName()){
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+		switch($command->getName()){
 			case "servers":
 				if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
