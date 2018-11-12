@@ -62,39 +62,42 @@ class Main extends PluginBase implements Listener {
     }
     public function onDamageEnable(EntityDamageEvent $event){
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
-            if($this->getConfig()->get("disable-damage") === true){
+		$player = $event->getPlayer();
+            if($this->getConfig()->get("disable-damage") === false){
+            }
+        if($player->isSurvival() === true){
             $event->setCancelled(false); //To-Do see if this is correct
         }
     }
     }
   public function onPlaceEnable(BlockPlaceEvent $event) {
-       if($this->getConfig()->get("disable-placing") === true){
+       if($this->getConfig()->get("disable-placing") === false){
         $event->setCancelled(false); //To-Do see if this is correct
     }
   }
     public function onBreakEnable(BlockBreakEvent $event) {
-         if($this->getConfig()->get("disable-breaking") === true){
+         if($this->getConfig()->get("disable-breaking") === false){
 		$event->setCancelled(false); //To-Do see if this is correct
     }
     }
     public function HungerEnable(PlayerExhaustEvent $event) {
-         if($this->getConfig()->get("disable-hunger") === true){
+         if($this->getConfig()->get("disable-hunger") === false){
         $event->setCancelled(false); //To-Do see if this is correct
     }
     }
     public function DropItemEnable(PlayerDropItemEvent $event){
-         if($this->getConfig()->get("disable-dropitem") === true){
+         if($this->getConfig()->get("disable-dropitem") === false){
         $event->setCancelled(false); //To-Do see if this is correct
     }
     }
     public function onConsumeEnable(PlayerItemConsumeEvent $event){
-         if($this->getConfig()->get("disable-itemconsume") === true){
+         if($this->getConfig()->get("disable-itemconsume") === false){
         $event->setCancelled(false); //To-Do see if this is correct
     }
     }
     public function onJoin(PlayerJoinEvent $event){
 	    $player = $event->getPlayer();
-	     $player->getInventory()->setItem($this->getConfig()->get("join-slot"), Item::get($this->getConfig()->get("server-selector-itemid")->setCustomName($this->getConfig()->get("server-selector-name"))));
+	     $player->getInventory()->setItem($this->getConfig()->get("join-slot"), Item::get($this->getConfig()->get("server-selector-itemid", 0, 1)->setCustomName($this->getConfig()->get("server-selector-name"))));
     }
     public function onInteract(PlayerInteractEvent $event){
 	   $player = $event->getPlayer();
