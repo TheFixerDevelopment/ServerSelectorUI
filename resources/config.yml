@@ -1,5 +1,7 @@
 ## Welcome to the ServerSelectorUI Config!
 
+console-message: "Please use this command in game."
+
 ## Here are a list of events you can disable / enable:
 disable-damage: true
 disable-placing: true
