@@ -1,9 +1,9 @@
 name: ServerSelectorUI
 main: ServerSelectorUI\Main
 api: [3.0.0]
-version: 0.0.3
-author: BajanVlogs
+version: 0.0.4
+author: BajanVlogs, updated by VMPE Development team
 
 commands:
  servers:
-  description: "This is for transfering servers using CustomUI"
+  description: "This is for transfering servers using FormAPI"
