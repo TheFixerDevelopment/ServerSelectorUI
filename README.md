@@ -7,5 +7,5 @@ This plugin is currently made specifically for a server I own. I will be making 
 
 
 ### NOTE
-## This plugin is now stabled again! Currently, we have no plans to add major updates into this plugin. If you find any issues regarding this branch, please open an issue. 
+## This plugin is now fully stabled again! Currently, we have no plans to add major updates into this plugin. If you find any issues regarding this branch, please open an issue. 
 
