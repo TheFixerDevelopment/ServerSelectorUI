@@ -92,15 +92,13 @@ class Main extends PluginBase implements Listener {
 								$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
-							break;
-              
-								
+							break;		
 						}
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
-					$form->addButton(TextFormat::DARK_AQUA . "OP §bFactions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
-					$form->addButton(TextFormat::DARK_AQUA . "Normal §bFactions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
+					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
+					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
 					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
 					$form->sendToPlayer($player);
 	    }
@@ -146,8 +144,8 @@ class Main extends PluginBase implements Listener {
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
-					$form->addButton(TextFormat::DARK_AQUA . "OP §bFactions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
-					$form->addButton(TextFormat::DARK_AQUA . "Normal §bFactions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
+					$form->addButton(TextFormat::DARK_AQUA . "OP " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
+					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
 					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
 					$form->sendToPlayer($sender);
 				}
