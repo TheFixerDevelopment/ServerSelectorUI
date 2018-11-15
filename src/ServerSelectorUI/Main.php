@@ -24,8 +24,14 @@ class Main extends PluginBase implements Listener {
 	    $this->registerEvents();
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		if($api === null){
-			$this->getServer()->getPluginManager()->disablePlugin($this);			
+			$this->getLogger()->info("FormAPI plugin is required to run this plugin. Without this, this plugin cannot begin to enable. Plugin has been disabled.");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
+			return;
 		}
+	    if($this->getServer()->getPluginManager()->getPlugin("FormAPI")) {
+	       $this->getLogger()->info("FormAPI plugin has been found onto the system. This plugin shall begin enabling!");
+	       return;
+        }
     }
     public function onDamageDisable(EntityDamageEvent $event){
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
