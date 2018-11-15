@@ -1,5 +1,7 @@
 <?php
+
 namespace ServerSelectorUI;
+
 use pocketmine\{Player, Server};
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -15,23 +17,29 @@ class Main extends PluginBase implements Listener {
     public function registerEvents(): void {
 	    $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
-    public function onEnable(): void {
-	    $this->registerEvents();
+    protected function onEnable(): void {
+	       $this->registerEvents();
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		if($api === null){
-			$this->getServer()->getPluginManager()->disablePlugin($this);			
+			$this->getLogger()->info("FormAPI plugin is required to run this plugin. Without this, this plugin cannot begin to enable. Plugin has been disabled.");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
+			return;
 		}
+	    if($this->getServer()->getPluginManager()->getPlugin("FormAPI")) {
+	       $this->getLogger()->info("FormAPI plugin has been found onto the system. This plugin shall begin enabling!");
+	       return;
+        }
     }
     public function onDamageDisable(EntityDamageEvent $event): void {
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
-            $event->setCancelled(true);
+        $event->setCancelled(true);
         }
-    }
+  }
   public function onPlaceDisable(BlockPlaceEvent $event): void {
         $event->setCancelled(true);
     }
     public function onBreakDisable(BlockBreakEvent $event): void {
-		$event->setCancelled(true);
+	$event->setCancelled(true);
     }
     public function HungerDisable(PlayerExhaustEvent $event): void {
         $event->setCancelled(true);
