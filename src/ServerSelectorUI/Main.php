@@ -29,7 +29,7 @@ class Main extends PluginBase implements Listener {
 			return;
 		}
 	    if($this->getServer()->getPluginManager()->getPlugin("FormAPI")) {
-	       $this->getLogger()->info("FormAPI plugin has been found onto the system. This plugin shall begin enabling!");
+	       $this->getLogger()->info("FormAPI plugin has been found! This plugin shall begin enabling!");
 	       return;
         }
     }
