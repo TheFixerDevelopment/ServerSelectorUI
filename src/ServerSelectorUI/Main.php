@@ -22,6 +22,7 @@ class Main extends PluginBase implements Listener {
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		if($api === null){
 			$this->getLogger()->info("FormAPI plugin is required to run this plugin. Without this, this plugin cannot begin to enable. Plugin has been disabled.");
+			$this->getLogger()->info("We only support this download link here: https://poggit.pmmp.io/r/34221/FormAPI_dev-5.phar - We may support the latest in the future.");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 			return;
 		}
