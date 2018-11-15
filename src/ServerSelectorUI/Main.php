@@ -142,7 +142,7 @@ class Main extends PluginBase implements Listener {
 					$form->addButton(TextFormat::DARK_AQUA . "OP §bFactions\n" . TextFormat::GREEN . "ONLINE", 0);
 					$form->addButton(TextFormat::DARK_AQUA . "Normal §bFactions\n" . TextFormat::GREEN . "ONLINE", 1);
 					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . "OFFLINE", 2);
-					$form->sendToPlayer($player);
+					$form->sendToPlayer($sender);
 				}
 				else{
 					$sender->sendMessage(TextFormat::RED . "Use this Command in-game.");
