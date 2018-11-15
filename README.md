@@ -7,5 +7,6 @@ This plugin is currently made specifically for a server I own. I will be making 
 
 
 ### NOTE
-## This plugin is nowhere near finished, and may take time for it to be completed. Bugs may rise, so report them, by opening an issue. Thank you.
+## With this current branch, there may be many, many issues and bugs which could potentially not function on your server. Do not complain if you get any errors regarding this plugin. We are aware of them, and will fix it at our own pace.
+## There are many features that are possibly broken on your server, ex: Configurations, errors, or lag. We hope to have this fixed very soon. For now, use the master branch for the very stable releases, and use the 4.0.0-API if you're using Pocketmine 4.0.0.
 
