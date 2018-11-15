@@ -137,9 +137,7 @@ class Main extends PluginBase implements Listener {
 								$form->addButton(TextFormat::RED . "EXIT");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
-							break;
-              
-								
+							break;	
 						}
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
