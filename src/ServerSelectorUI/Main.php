@@ -69,6 +69,8 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
+								$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
 							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
 								$command = "transferserver factions.voidminerpe.ml 25655";
@@ -78,6 +80,8 @@ class Main extends PluginBase implements Listener {
 							break;
 								
 							case 1:
+						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
 							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the Factions server..");
 								$command = "transferserver factions2.voidminerpe.ml 25584";
@@ -87,6 +91,8 @@ class Main extends PluginBase implements Listener {
 						        break;
 							
 							case 2:
+						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 								$form->setTitle(TextFormat::RED . "Server unavailable!");
 								$form->addButton(TextFormat::RED . "This server is currently unavailable or offline! Please retry later!");
 								$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT");
@@ -95,6 +101,8 @@ class Main extends PluginBase implements Listener {
 							break;		
 						}
 					});
+						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
 					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
@@ -114,6 +122,8 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
+								$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
 							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
 								$command = "transferserver factions.voidminerpe.ml 25655";
@@ -123,6 +133,8 @@ class Main extends PluginBase implements Listener {
 							break;
 								
 							case 1:
+						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
 							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the Factions server..");
 								$command = "transferserver factions2.voidminerpe.ml 25584";
@@ -132,6 +144,8 @@ class Main extends PluginBase implements Listener {
 						        break;
 							
 							case 2:
+						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 								$form->setTitle(TextFormat::RED . "Server unavailable!");
 								$form->addButton(TextFormat::RED . "This server is currently unavailable or offline! Please retry later!");
 								$form->addButton(TextFormat::RED . "EXIT");
@@ -140,6 +154,8 @@ class Main extends PluginBase implements Listener {
 							break;	
 						}
 					});
+						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+					$form = $api->createSimpleForm(function (Player $sender, $data){
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
 					$form->addButton(TextFormat::DARK_AQUA . "OP " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
