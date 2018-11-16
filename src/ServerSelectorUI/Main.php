@@ -69,34 +69,24 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
-							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
-							    $form->setContent(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
-							    $form->sendToPlayer($player);
+							     $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
 								$command = "transferserver factions.voidminerpe.ml 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle(TextFormat::RED . "Server error");
-								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
-								 $form->sendToPlayer($player);
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
 							break;
+								
 							case 1:
-							    $result->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the Factions server..");
-							         $form->sendToPlayer($player);
+							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
 								$command = "transferserver factions2.voidminerpe.ml 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle(TextFormat::RED . "Server error");
-								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
-								 $form->sendToPlayer($player);
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
 						        break;
 							
 							case 2:
-								$form->setTitle(TextFormat::RED . "Server unavailable!");
-								$form->addButton(TextFormat::RED . "This server is currently unavailable or offline! Please retry later!");
-								$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT");
-								 $form->sendToPlayer($player);
+								$sender->sendMessage(TextFormat::RED . "Coming soon");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
-							break;		
+							break;
 						}
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
@@ -118,35 +108,24 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
-							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
-							         $form->sendToPlayer($sender);
+							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
 								$command = "transferserver factions.voidminerpe.ml 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle(TextFormat::RED . "Server error");
-								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
-								 $form->sendToPlayer($sender);
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
 							break;
 								
 							case 1:
-							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the Factions server..");
-							         $form->sendToPlayer($sender);
+							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
 								$command = "transferserver factions2.voidminerpe.ml 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle(TextFormat::RED . "Server error");
-								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
-								 $form->sendToPlayer($sender);
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
 						        break;
 							
 							case 2:
-								$form->setTitle(TextFormat::RED . "Server unavailable!");
-								$form->addButton(TextFormat::RED . "This server is currently unavailable or offline! Please retry later!");
-								$form->addButton(TextFormat::RED . "EXIT");
-								 $form->sendToPlayer($sender);
+								$sender->sendMessage(TextFormat::RED . "Coming soon");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
-							break;	
+							break;
 						}
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
