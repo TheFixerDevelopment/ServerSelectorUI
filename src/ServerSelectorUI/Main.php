@@ -81,14 +81,18 @@ class Main extends PluginBase implements Listener {
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
 						        break;
-							
+	
 							case 2:
+								$sender->sendMessage(TextFormat::RED . "Coming soon!");
+							break;
+							
+							case 3:
 								$sender->sendMessage(TextFormat::RED . "Coming soon");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;
 							
-							case 3:
+							case 4:
 								$sender->sendMessage(TextFormat::RED . "You have closed the Server selector!");
 							break;
 						}
@@ -97,8 +101,9 @@ class Main extends PluginBase implements Listener {
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
 					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
 					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
-					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
-		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 3);
+		    			$form->addButton(TextFormat::GREEN . "SkyBlock\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
+					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 3);
+		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 4);
 					$form->sendToPlayer($player);
 	    }
 	}
@@ -127,12 +132,16 @@ class Main extends PluginBase implements Listener {
 						        break;
 							
 							case 2:
+								$sender->sendMessage(TextFormat::RED . "Coming soon!");
+							break;
+							
+							case 3:
 								$sender->sendMessage(TextFormat::RED . "Coming soon");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;
 							
-							case 3:
+							case 4:
 								$sender->sendMessage(TextFormat::RED . "You have closed the Server selector!");
 							break;
 						}
@@ -141,8 +150,9 @@ class Main extends PluginBase implements Listener {
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
 					$form->addButton(TextFormat::DARK_AQUA . "OP " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
 					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
-					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
-					$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 3);
+					$form->addButton(TextFormat::GREEN . "SkyBlock\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
+					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 3);
+					$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 4);
 					$form->sendToPlayer($sender);
 				}
 				else{
