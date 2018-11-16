@@ -87,6 +87,10 @@ class Main extends PluginBase implements Listener {
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;
+							
+							case 3:
+								$sender->sendMessage(TextFormat::RED . "You have closed the Server selector!");
+							break;
 						}
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
@@ -94,6 +98,7 @@ class Main extends PluginBase implements Listener {
 					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
 					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
 					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
+		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 3);
 					$form->sendToPlayer($player);
 	    }
 	}
@@ -126,6 +131,10 @@ class Main extends PluginBase implements Listener {
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;
+							
+							case 3:
+								$sender->sendMessage(TextFormat::RED . "You have closed the Server selector!");
+							break;
 						}
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
@@ -133,6 +142,7 @@ class Main extends PluginBase implements Listener {
 					$form->addButton(TextFormat::DARK_AQUA . "OP " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
 					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
 					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
+					$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 3);
 					$form->sendToPlayer($sender);
 				}
 				else{
