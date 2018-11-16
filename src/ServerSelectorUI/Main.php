@@ -1,7 +1,6 @@
 <?php
 
 namespace ServerSelectorUI;
-
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -17,6 +16,7 @@ use pocketmine\command\ConsoleCommandSender;
 use pocketmine\item\Item;
 
 class Main extends PluginBase implements Listener {
+	
     public function registerEvents(): void {
 	    $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
@@ -69,40 +69,36 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
-								$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, $data){
 							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
+							    $form->setContent(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
+							    $form->sendToPlayer($player);
 								$command = "transferserver factions.voidminerpe.ml 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$form->setTitle(TextFormat::RED . "Server error");
 								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								 $form->sendToPlayer($player);
 							break;
-								
 							case 1:
-						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, $data){
-							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
+							    $result->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
 							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the Factions server..");
+							         $form->sendToPlayer($player);
 								$command = "transferserver factions2.voidminerpe.ml 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$form->setTitle(TextFormat::RED . "Server error");
 								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								 $form->sendToPlayer($player);
 						        break;
 							
 							case 2:
-						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, $data){
 								$form->setTitle(TextFormat::RED . "Server unavailable!");
 								$form->addButton(TextFormat::RED . "This server is currently unavailable or offline! Please retry later!");
 								$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT");
+								 $form->sendToPlayer($player);
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;		
 						}
 					});
-						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, $data){
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
 					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
@@ -110,7 +106,7 @@ class Main extends PluginBase implements Listener {
 					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
 					$form->sendToPlayer($player);
 	    }
-    }
+	}
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
 		switch($cmd->getName()){
 			case "servers":
@@ -122,40 +118,37 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
-								$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, $data){
 							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
 							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
+							         $form->sendToPlayer($sender);
 								$command = "transferserver factions.voidminerpe.ml 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$form->setTitle(TextFormat::RED . "Server error");
 								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								 $form->sendToPlayer($sender);
 							break;
 								
 							case 1:
-						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, $data){
 							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
 							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the Factions server..");
+							         $form->sendToPlayer($sender);
 								$command = "transferserver factions2.voidminerpe.ml 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$form->setTitle(TextFormat::RED . "Server error");
 								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								 $form->sendToPlayer($sender);
 						        break;
 							
 							case 2:
-						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, $data){
 								$form->setTitle(TextFormat::RED . "Server unavailable!");
 								$form->addButton(TextFormat::RED . "This server is currently unavailable or offline! Please retry later!");
 								$form->addButton(TextFormat::RED . "EXIT");
+								 $form->sendToPlayer($sender);
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;	
 						}
 					});
-						$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-					$form = $api->createSimpleForm(function (Player $sender, $data){
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
 					$form->addButton(TextFormat::DARK_AQUA . "OP " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
