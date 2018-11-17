@@ -1,6 +1,7 @@
 <?php
 
 namespace ServerSelectorUI;
+
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -69,19 +70,21 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
-							     $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
-								$command = "transferserver factions.voidminerpe.ml 25655";
+							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
+								$command = "transferserver 149.56.127.110 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::PURPLE . "transfered to " . TextFormat::AQUA . "OP factions");
 							break;
 								
 							case 1:
 							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
-								$command = "transferserver factions2.voidminerpe.ml 25584";
+								$command = "transferserver 173.212.248.242 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+									$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::PURPLE . "transfered to " . TextFormat::AQUA . "Normal factions");
 						        break;
-	
+							
 							case 2:
 								$sender->sendMessage(TextFormat::RED . "Coming soon!");
 							break;
@@ -99,10 +102,10 @@ class Main extends PluginBase implements Listener {
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
-					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0, "https://i.ytimg.com/vi/HRCa_4fBQ2s/mqdefault.jpg");
-					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1, "https://i1.ytimg.com/vi/xq1wDZm8HSQ/mqdefault.jpg");
-		    			$form->addButton(TextFormat::GREEN . "SkyBlock\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTErK07ccbsBGjIm2_eHLu-GQnltuAVTwzwQiMk0MPWRnaNloRG");
-					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 3, "https://i.ytimg.com/vi/ki22mZ8uFjQ/hqdefault.jpg");
+					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
+					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
+		    			$form->addButton(TextFormat::GREEN . "SkyBlock\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
+					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 3);
 		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 4);
 					$form->sendToPlayer($player);
 	    }
@@ -119,17 +122,21 @@ class Main extends PluginBase implements Listener {
 						switch($result){
 							case 0:
 							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
-								$command = "transferserver factions.voidminerpe.ml 25655";
+								$command = "transferserver 149.56.127.110 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::PURPLE . "transfered to " . TextFormat::AQUA . "OP factions");
 							break;
 								
 							case 1:
 							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
-								$command = "transferserver factions2.voidminerpe.ml 25584";
+								$command = "transferserver 173.212.248.242 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::PURPLE . "transfered to " . TextFormat::AQUA . "Normal factions");
 						        break;
+								
+						   break;
 							
 							case 2:
 								$sender->sendMessage(TextFormat::RED . "Coming soon!");
@@ -148,10 +155,10 @@ class Main extends PluginBase implements Listener {
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
-					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0, "https://i.ytimg.com/vi/HRCa_4fBQ2s/mqdefault.jpg");
-					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1, "https://i1.ytimg.com/vi/xq1wDZm8HSQ/mqdefault.jpg");
-		    			$form->addButton(TextFormat::GREEN . "SkyBlock\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTErK07ccbsBGjIm2_eHLu-GQnltuAVTwzwQiMk0MPWRnaNloRG");
-					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 3, "https://i.ytimg.com/vi/ki22mZ8uFjQ/hqdefault.jpg");
+					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
+					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
+		    			$form->addButton(TextFormat::GREEN . "SkyBlock\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
+					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 3);
 		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 4);
 					$form->sendToPlayer($sender);
 				}
