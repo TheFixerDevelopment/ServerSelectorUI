@@ -74,7 +74,7 @@ class Main extends PluginBase implements Listener {
 								$command = "transferserver 149.56.127.110 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
-								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::PURPLE . "transfered to " . TextFormat::AQUA . "OP factions");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::LIGHT_PURPLE . "transfered to " . TextFormat::AQUA . "OP factions");
 							break;
 								
 							case 1:
@@ -82,7 +82,7 @@ class Main extends PluginBase implements Listener {
 								$command = "transferserver 173.212.248.242 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
-									$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::PURPLE . "transfered to " . TextFormat::AQUA . "Normal factions");
+									$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::LIGHT_PURPLE . "transfered to " . TextFormat::AQUA . "Normal factions");
 						        break;
 							
 							case 2:
@@ -125,7 +125,7 @@ class Main extends PluginBase implements Listener {
 								$command = "transferserver 149.56.127.110 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
-								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::PURPLE . "transfered to " . TextFormat::AQUA . "OP factions");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::LIGHT_PURPLE . "transfered to " . TextFormat::AQUA . "OP factions");
 							break;
 								
 							case 1:
@@ -133,7 +133,7 @@ class Main extends PluginBase implements Listener {
 								$command = "transferserver 173.212.248.242 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
 								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
-								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::PURPLE . "transfered to " . TextFormat::AQUA . "Normal factions");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . "$sender " . TextFormat::LIGHT_PURPLE . "transfered to " . TextFormat::AQUA . "Normal factions");
 						        break;
 								
 						   break;
