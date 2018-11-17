@@ -162,6 +162,7 @@ class Main extends PluginBase implements Listener {
 		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 4);
 					$form->sendToPlayer($sender);
 				}
+			switch($cmd->getName()){
 			case "factions":
 		if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
@@ -198,6 +199,7 @@ class Main extends PluginBase implements Listener {
 		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 2);
 					$form->sendToPlayer($sender);
 		}
+		switch($cmd->getName()){
 		case "skyblock":
 		if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
@@ -232,6 +234,7 @@ class Main extends PluginBase implements Listener {
 		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 2);
 					$form->sendToPlayer($sender);
 		}
+		switch($cmd->getName()){
 		case "prisons":
 		if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
