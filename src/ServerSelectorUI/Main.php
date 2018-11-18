@@ -17,6 +17,7 @@ class Main extends PluginBase implements Listener {
     public function registerEvents(): void {
 	    $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
+
     protected function onEnable(): void {
 	       $this->registerEvents();
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
@@ -30,6 +31,40 @@ class Main extends PluginBase implements Listener {
 	       $this->getLogger()->info("FormAPI plugin has been found! This plugin shall begin enabling!");
 	       return;
         }
+	$factions = $this->getServer()->getPluginManager()->getPlugin("FactionsServer");
+		if($factions === null){
+			$this->getLogger()->info("FactionsServer plugin isn't required, but an optional use of this Server selector API system.");
+			$this->getLogger()->info("The download link is coming soon!");
+			return;
+		}
+	    if($this->getServer()->getPluginManager()->getPlugin("FactionsServer")) {
+	       $this->getLogger()->info("FactionsServer plugin has been found. Enabling FactionsServer support.");
+	       return;
+    }
+    $skyblock = $this->getServer()->getPluginManager()->getPlugin("SkyBlockServer");
+		if($skyblock === null){
+			$this->getLogger()->info("SkyBlockServer plugin isn't required, but an optional use of this Server selector API system.");
+			$this->getLogger()->info("The download link is coming soon!");
+			return;
+		}
+	    if($this->getServer()->getPluginManager()->getPlugin("SkyBlockServer")) {
+	       $this->getLogger()->info("SkyBlockServer plugin has been found. Enabling SkyBlockServer support.");
+	       return;
+	    }
+    $prisons = $this->getServer()->getPluginManager()->getPlugin("PrisonsServer");
+		if($prisons === null){
+			$this->getLogger()->info("PrisonsServer plugin isn't required, but an optional use of this Server selector API system.");
+			$this->getLogger()->info("The download link is coming soon!");
+			return;
+		}
+	    if($this->getServer()->getPluginManager()->getPlugin("PrisonsServer")) {
+	       $this->getLogger()->info("PrisonsServer plugin has been found. Enabling PrisonsServer support.");
+	       return;
+    	    }
+    }
+    public function onEnable(): void {
+	    $this->registerEvents();
+	    $this->registerPlugins();
     }
     public function onDamageDisable(EntityDamageEvent $event): void {
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
@@ -64,29 +99,31 @@ class Main extends PluginBase implements Listener {
 					 $result = $data;
 					if($result != null) {
 					}
+
 		switch($result){
 		        case 0:
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
 							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
 								$command = "transferserver factions.voidminerpe.ml 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle(TextFormat::RED . "Server error");
-								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . $sender->getPlayer()->getName() . TextFormat::LIGHT_PURPLE . " transfered to " . TextFormat::AQUA . "OP factions");
 							break;
 								
 							case 1:
-							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the Factions server..");
-								$command = "transferserver factions2.voidminerpe.ml 25584";
+							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
+								$command = "transferserver 173.212.248.242 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle(TextFormat::RED . "Server error");
-								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+									$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . $sender->getPlayer()->getName() . TextFormat::LIGHT_PURPLE . " transfered to " . TextFormat::AQUA . "Normal factions");
 						        break;
 							
 							case 2:
-								$form->setTitle(TextFormat::RED . "Server unavailable!");
-								$form->addButton(TextFormat::RED . "This server is currently unavailable or offline! Please retry later!");
-								$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT");
+								$sender->sendMessage(TextFormat::RED . "Coming soon!");
+							break;
+							
+							case 3:
+								$sender->sendMessage(TextFormat::RED . "Coming soon");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
 							break;
@@ -111,37 +148,41 @@ class Main extends PluginBase implements Listener {
 					}
 						switch($result){
 							case 0:
-							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the OP Factions server..");
-								$command = "transferserver factions.voidminerpe.ml 25655";
+							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
+								$command = "transferserver 149.56.127.110 25655";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle(TextFormat::RED . "Server error");
-								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . $sender->getPlayer()->getName() . TextFormat::LIGHT_PURPLE . " transfered to " . TextFormat::AQUA . "OP factions");
 							break;
 								
 							case 1:
-							    $form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "SERVER ONLINE");
-							        $form->addButton(TextFormat::DARK_PURPLE . "Please wait whilst we transfer you to the Factions server..");
-								$command = "transferserver factions2.voidminerpe.ml 25584";
+							    $sender->sendMessage(TextFormat::DARK_PURPLE . "Please wait whilst we transferred you to the server..");
+								$command = "transferserver 173.212.248.242 25584";
 								$this->getServer()->getCommandMap()->dispatch($sender, $command);
-								$form->setTitle(TextFormat::RED . "Server error");
-								$form->addButton(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$sender->sendMessage(TextFormat::RED . "Something went wrong - Contact server administrators if this was a mistake.");
+								$this->getServer()->broadcastMessage(TextFormat::DARK_PURPLE . $sender->getPlayer()->getName() . TextFormat::LIGHT_PURPLE . " transfered to " . TextFormat::AQUA . "Normal factions");
 						        break;
+								
+						   break;
 							
 							case 2:
-								$form->setTitle(TextFormat::RED . "Server unavailable!");
-								$form->addButton(TextFormat::RED . "This server is currently unavailable or offline! Please retry later!");
-								$form->addButton(TextFormat::RED . "EXIT");
+								$sender->sendMessage(TextFormat::RED . "Coming soon!");
+							break;
+							
+							case 3:
+								$sender->sendMessage(TextFormat::RED . "Coming soon");
 								//$command = "";
 								//$this->getServer()->getCommandMap()->dispatch($player, $command);
-							break;		
+							break;
 						}
 					});
 					$form->setTitle(TextFormat::GREEN . TextFormat::BOLD . "Server Selector!");
 					$form->setContent(TextFormat::AQUA . TextFormat::BOLD . "Please choose a server to teleport to!");
-					$form->addButton(TextFormat::DARK_AQUA . "OP " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
+					$form->addButton(TextFormat::DARK_AQUA . "OP" . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 0);
 					$form->addButton(TextFormat::DARK_AQUA . "Normal " . TextFormat::AQUA . "Factions\n" . TextFormat::GREEN . TextFormat::BOLD . "ONLINE", 1);
-					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
+		    			$form->addButton(TextFormat::GREEN . "SkyBlock\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 2);
+					$form->addButton(TextFormat::DARK_PURPLE . "Prisons\n" . TextFormat::RED . TextFormat::BOLD . "OFFLINE", 3);
+		    			$form->addButton(TextFormat::RED . TextFormat::BOLD . "EXIT", 4);
 					$form->sendToPlayer($sender);
 				}
 				else{
