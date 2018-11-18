@@ -11,5 +11,9 @@ This plugin is currently made specifically for a server I own. I will be making 
 
 ## WARNING
 
-# This branch is for display only. We will add a branch that's for the public very soon. You can use this plugin, but don't expect us to add configurations, and everything to the public for public use. We will soon make a branch that's for public use very soon, meaning you can use it, change anything without any problems, and what not.
+# This branch is for public use. This branch is that's for public use very only, meaning you can use it, change anything without any problems, and what not.
+# But keep in mind - We are currently unfinished with this project, especially for public use branch.
+# With this branch, you may wish to: Configurate, make changes that could potential be good for your server use and everything else.
+# And more.
+If you'd like to add changes to this branch, then please make a Pull request. Thank you.
 
