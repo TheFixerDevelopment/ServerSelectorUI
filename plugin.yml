@@ -1,15 +1,9 @@
 name: ServerSelectorUI
 main: ServerSelectorUI\Main
-api: [3.0.0]
-version: 0.0.5
-author: BajanVlogs, updated by VMPE Development team
+api: 4.0.0
+version: 0.1.1
+author: BajanVlogs, updated by VMPE Development Team
 
 commands:
  servers:
   description: "This is for transfering servers using FormAPI"
- factions:
-  description: "For factions server specifically!"
- skyblock:
-  description: "For SkyBlock servers specifically!"
- prisons:
-  description: "For Prisons server specifically!"
