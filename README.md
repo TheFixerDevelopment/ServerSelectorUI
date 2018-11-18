@@ -11,7 +11,7 @@ This plugin is currently made specifically for a server I own. I will be making 
 
 ## WARNING
 
-# This branch is for public use. This branch is that's for public use very only, meaning you can use it, change anything without any problems, and what not.
+# This branch is for public use, meaning you can use it, change anything without any problems, and what not.
 # But keep in mind - We are currently unfinished with this project, especially for public use branch.
 # With this branch, you may wish to: Configurate, make changes that could potential be good for your server use and everything else.
 # And more.
