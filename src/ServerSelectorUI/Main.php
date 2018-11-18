@@ -62,10 +62,6 @@ class Main extends PluginBase implements Listener {
 	       return;
     	    }
     }
-    public function onEnable(): void {
-	    $this->registerEvents();
-	    $this->registerPlugins();
-    }
     public function onDamageDisable(EntityDamageEvent $event): void {
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
         $event->setCancelled(true);
