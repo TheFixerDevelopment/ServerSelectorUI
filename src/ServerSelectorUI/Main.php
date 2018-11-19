@@ -32,7 +32,8 @@ class Main extends PluginBase implements Listener {
 	    if($this->getServer()->getPluginManager()->getPlugin("FormAPI")) {
 	       $this->getLogger()->info("FormAPI support has been enabled.");
 	       return;
-        }
+	       
+    } else {
 	$factions = $this->getServer()->getPluginManager()->getPlugin("FactionsServer");
 		if($factions === null){
 			$this->getLogger()->info("[Tried twice] FactionsServer plugin isn't required, but an optional use of this Server selector API system.");
@@ -42,7 +43,8 @@ class Main extends PluginBase implements Listener {
 	    if($this->getServer()->getPluginManager()->getPlugin("FactionsServer")) {
 	       $this->getLogger()->info("FactionsServer support has been enabled!");
 	       return;
-    }
+	       
+    } else {
     $skyblock = $this->getServer()->getPluginManager()->getPlugin("SkyBlockServer");
 		if($skyblock === null){
 			$this->getLogger()->info("[Tried twice] SkyBlockServer plugin isn't required, but an optional use of this Server selector API system.");
@@ -52,7 +54,8 @@ class Main extends PluginBase implements Listener {
 	    if($this->getServer()->getPluginManager()->getPlugin("SkyBlockServer")) {
 	       $this->getLogger()->info("SkyBlockServer support has been enabled.");
 	       return;
-	    }
+	       
+	    } else {
     $prisons = $this->getServer()->getPluginManager()->getPlugin("PrisonsServer");
 		if($prisons === null){
 			$this->getLogger()->info("[Tried twice] PrisonsServer plugin isn't required, but an optional use of this Server selector API system.");
@@ -63,6 +66,9 @@ class Main extends PluginBase implements Listener {
 	       $this->getLogger()->info("PrisonsServer support enabled!");
 	       return;
     	    }
+    }
+    }
+    }
     }
     public function LoadingPlugins(): void {
 	     $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
