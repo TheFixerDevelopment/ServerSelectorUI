@@ -24,49 +24,94 @@ class Main extends PluginBase implements Listener {
     public function registerPlugins(): void {
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		if($api === null){
-			$this->getLogger()->info("FormAPI plugin is required to run this plugin. Without this, this plugin cannot begin to enable. Plugin has been disabled.");
+			$this->getLogger()->info("[Tried twice] FormAPI plugin is required to run this plugin. Without this, this plugin cannot begin to enable. Plugin has been disabled.");
 			$this->getLogger()->info("We only support this download link here: https://poggit.pmmp.io/r/34221/FormAPI_dev-5.phar - We may support the latest in the future.");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 			return;
 		}
 	    if($this->getServer()->getPluginManager()->getPlugin("FormAPI")) {
-	       $this->getLogger()->info("FormAPI plugin has been found! This plugin shall begin enabling!");
+	       $this->getLogger()->info("FormAPI support has been enabled.");
 	       return;
         }
 	$factions = $this->getServer()->getPluginManager()->getPlugin("FactionsServer");
 		if($factions === null){
-			$this->getLogger()->info("FactionsServer plugin isn't required, but an optional use of this Server selector API system.");
+			$this->getLogger()->info("[Tried twice] FactionsServer plugin isn't required, but an optional use of this Server selector API system.");
 			$this->getLogger()->info("The download link is coming soon!");
 			return;
 		}
 	    if($this->getServer()->getPluginManager()->getPlugin("FactionsServer")) {
-	       $this->getLogger()->info("FactionsServer plugin has been found. Enabling FactionsServer support.");
+	       $this->getLogger()->info("FactionsServer support has been enabled!");
 	       return;
     }
     $skyblock = $this->getServer()->getPluginManager()->getPlugin("SkyBlockServer");
 		if($skyblock === null){
-			$this->getLogger()->info("SkyBlockServer plugin isn't required, but an optional use of this Server selector API system.");
+			$this->getLogger()->info("[Tried twice] SkyBlockServer plugin isn't required, but an optional use of this Server selector API system.");
 			$this->getLogger()->info("The download link is coming soon!");
 			return;
 		}
 	    if($this->getServer()->getPluginManager()->getPlugin("SkyBlockServer")) {
-	       $this->getLogger()->info("SkyBlockServer plugin has been found. Enabling SkyBlockServer support.");
+	       $this->getLogger()->info("SkyBlockServer support has been enabled.");
 	       return;
 	    }
     $prisons = $this->getServer()->getPluginManager()->getPlugin("PrisonsServer");
 		if($prisons === null){
-			$this->getLogger()->info("PrisonsServer plugin isn't required, but an optional use of this Server selector API system.");
+			$this->getLogger()->info("[Tried twice] PrisonsServer plugin isn't required, but an optional use of this Server selector API system.");
 			$this->getLogger()->info("The download link is coming soon!");
 			return;
 		}
 	    if($this->getServer()->getPluginManager()->getPlugin("PrisonsServer")) {
-	       $this->getLogger()->info("PrisonsServer plugin has been found. Enabling PrisonsServer support.");
+	       $this->getLogger()->info("PrisonsServer support enabled!");
+	       return;
+    	    }
+    }
+    public function LoadingPlugins(): void {
+	     $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+		if($api === null){
+			$this->getLogger()->info("FormAPI plugin is required to run this plugin. Without this, this plugin cannot begin to enable. [Retry]");
+			$this->getLogger()->info("We only support this download link here: https://poggit.pmmp.io/r/34221/FormAPI_dev-5.phar - We may support the latest in the future.");
+			return;
+		}
+	    if($this->getServer()->getPluginManager()->getPlugin("FormAPI")) {
+	       $this->getLogger()->info("FormAPI plugin has been found! This plugin is now loading..");
+	       return;
+        }
+	$factions = $this->getServer()->getPluginManager()->getPlugin("FactionsServer");
+		if($factions === null){
+			$this->getLogger()->info("FactionsServer plugin isn't required, but an optional use of this Server selector API system. [Retry]");
+			$this->getLogger()->info("The download link is coming soon!");
+			return;
+		}
+	    if($this->getServer()->getPluginManager()->getPlugin("FactionsServer")) {
+	       $this->getLogger()->info("FactionsServer plugin has been found. FactionsServer support loading..");
+	       return;
+    }
+    $skyblock = $this->getServer()->getPluginManager()->getPlugin("SkyBlockServer");
+		if($skyblock === null){
+			$this->getLogger()->info("SkyBlockServer plugin isn't required, but an optional use of this Server selector API system. [Retry]");
+			$this->getLogger()->info("The download link is coming soon!");
+			return;
+		}
+	    if($this->getServer()->getPluginManager()->getPlugin("SkyBlockServer")) {
+	       $this->getLogger()->info("SkyBlockServer plugin has been found. SkyBlockServer support loading..");
+	       return;
+	    }
+    $prisons = $this->getServer()->getPluginManager()->getPlugin("PrisonsServer");
+		if($prisons === null){
+			$this->getLogger()->info("PrisonsServer plugin isn't required, but an optional use of this Server selector API system. [Retry]");
+			$this->getLogger()->info("The download link is coming soon!");
+			return;
+		}
+	    if($this->getServer()->getPluginManager()->getPlugin("PrisonsServer")) {
+	       $this->getLogger()->info("PrisonsServer plugin has been found. PrisonsServer support loading..");
 	       return;
     	    }
     }
     public function onEnable(): void {
 	    $this->registerEvents();
 	    $this->registerPlugins();
+    }
+    public function onLoad(): void {
+	    $this->LoadingPlugins();
     }
     public function onDamageDisable(EntityDamageEvent $event){
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL){
